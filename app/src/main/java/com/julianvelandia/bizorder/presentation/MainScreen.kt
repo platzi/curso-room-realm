@@ -30,7 +30,9 @@ fun MainScreen(navController: NavHostController) {
                     navController.navigate(Screen.DetailOrder.getDetailsRoute(route))
                 })
             }
-            composable(Screen.PreOrders.route) {}
+            composable(Screen.PreOrders.route) {
+                PreOrdersScreen(modifier = Modifier.padding(innerPadding))
+            }
 
             composable(
                 route = Screen.DetailOrder.route,
