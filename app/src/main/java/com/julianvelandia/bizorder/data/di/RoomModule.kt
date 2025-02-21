@@ -2,7 +2,7 @@ package com.julianvelandia.bizorder.data.di
 
 import android.app.Application
 import androidx.room.Room
-import com.julianvelandia.bizorder.data.local.AppDatabase
+import com.julianvelandia.bizorder.data.local.room.AppDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -12,7 +12,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-class DatabaseModule {
+class RoomModule {
 
     @Provides
     @Singleton

@@ -1,4 +1,4 @@
-package com.julianvelandia.bizorder.data.local
+package com.julianvelandia.bizorder.data.local.room
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 

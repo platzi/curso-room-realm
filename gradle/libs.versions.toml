@@ -18,6 +18,8 @@ moshi = "1.15.0"
 
 room = "2.6.1"
 
+realm = "2.1.0"
+
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -47,9 +49,15 @@ androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref =
 androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
 
+realm-kotlin = { module = "io.realm.kotlin:library-base", version.ref = "realm" }
+
+
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 hilt-gradle = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+
+kotlin-realm = { id = "io.realm.kotlin", version.ref = "realm" }

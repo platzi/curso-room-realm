@@ -1,4 +1,4 @@
-package com.julianvelandia.bizorder.data.local
+package com.julianvelandia.bizorder.data.local.room
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
