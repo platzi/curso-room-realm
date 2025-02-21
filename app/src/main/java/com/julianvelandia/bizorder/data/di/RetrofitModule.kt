@@ -30,7 +30,9 @@ class RetrofitModule {
     @Provides
     @Singleton
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
-        val moshi = Moshi.Builder().build()
+        val moshi = Moshi.Builder()
+            .add(KotlinJsonAdapterFactory())
+            .build()
         return Retrofit.Builder()
             .baseUrl("https://bizorder.free.beeceptor.com")
             .client(okHttpClient)

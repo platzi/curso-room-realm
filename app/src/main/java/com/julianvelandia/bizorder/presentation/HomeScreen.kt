@@ -82,7 +82,7 @@ fun HomeScreen(
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 items(state.data) { item ->
-
+                    ItemView(item = item)
                 }
             }
         }
