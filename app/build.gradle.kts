@@ -70,6 +70,7 @@ dependencies {
     implementation(libs.retrofit2.moshi)
     implementation(libs.moshi.kotlin)
     implementation(libs.logging.interceptor)
+    implementation(libs.coil.compose)
 
     //Room
     implementation(libs.androidx.room.runtime)
