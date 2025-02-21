@@ -1,6 +1,7 @@
 package com.julianvelandia.bizorder.data.local.realm
 
 import io.realm.kotlin.Realm
+import io.realm.kotlin.UpdatePolicy
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
@@ -12,7 +13,7 @@ class OrderRealm @Inject constructor(
     suspend fun addOrders(orders: List<OrderObject>) {
         realm.write {
             orders.forEach { order ->
-                copyToRealm(order)
+                copyToRealm(order, updatePolicy = UpdatePolicy.ALL)
             }
         }
     }

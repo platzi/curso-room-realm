@@ -1,6 +1,7 @@
 package com.julianvelandia.bizorder.data
 
 import com.julianvelandia.bizorder.data.local.LocalDataStorage
+import com.julianvelandia.bizorder.data.local.realm.PreOrderObject
 import com.julianvelandia.bizorder.data.local.room.PreOrderEntity
 import com.julianvelandia.bizorder.data.local.toDomain
 import com.julianvelandia.bizorder.data.remote.RemoteDataStorage
@@ -15,28 +16,34 @@ class PreOrderRepositoryImpl(
 ) : PreOrdersRepository {
     override suspend fun savePreOrder(preOrder: PreOrder) =
         remoteDataStorage.savePreOrder().also { result ->
-            localDataStorage.savePreOrderRoom(
-                PreOrderEntity(
-                    customerName = preOrder.customerName,
-                    item = preOrder.product,
+            localDataStorage.savePreOrderRealm(
+                /* PreOrderEntity(
+                     customerName = preOrder.customerName,
+                     item = preOrder.product,
+                     isSent = result.isSuccess
+                 )
+                 */
+                PreOrderObject().apply {
+                    customerName = preOrder.customerName
+                    item = preOrder.product
                     isSent = result.isSuccess
-                )
+                }
             )
         }
 
     override fun getPreOrders(): Flow<Result<List<PreOrder>>> {
-        return localDataStorage.getAllPreOrdersRoom()
+        return localDataStorage.getAllPreOrdersRealm()
             .map { orderEntities ->
                 runCatching { orderEntities.map { it.toDomain() } }
             }
     }
 
-    override suspend fun onDelete(id: Long) = localDataStorage.deleteByIdRoom(id)
+    override suspend fun onDelete(id: Long) = localDataStorage.deleteByIdRealm(id)
 
     override suspend fun retrySync(id: Long) {
         val result = remoteDataStorage.savePreOrder()
         if (result.isSuccess) {
-            localDataStorage.retrySyncRoom(id, true)
+            localDataStorage.retrySyncRealm(id, true)
         }
     }
 
