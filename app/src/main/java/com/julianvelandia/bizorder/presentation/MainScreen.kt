@@ -22,7 +22,9 @@ fun MainScreen(navController: NavHostController) {
             navController = navController,
             startDestination = Screen.Home.route,
         ) {
-            composable(Screen.Create.route) {  }
+            composable(Screen.Create.route) {
+                CreateScreen()
+            }
             composable(Screen.Home.route) {
                 HomeScreen(modifier = Modifier.padding(innerPadding), navigateTo = { route ->
                     navController.navigate(Screen.DetailOrder.getDetailsRoute(route))
